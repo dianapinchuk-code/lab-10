@@ -1,17 +1,45 @@
 <!doctype html>
-<html lang="en">
+<html lang="uk">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Лабораторна робота 1 — Налаштування середовища</title>
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
-    <h1>Hello, World!</h1>
-    <ul>
-      <li></li>
-      <li></li>   
-      <li></li>
-    </ul>
+    <div class="container">
+      <header>
+        <h1>Лабораторна робота №1</h1>
+        <p class="subtitle">Тестування локального середовища фронтенд-розробки</p>
+      </header>
+
+      <main>
+        <section class="card">
+          <h2>Інтерактивний блок</h2>
+          <p>Натисніть кнопку, щоб перевірити роботу</p>
+          <div class="interactive-box">
+            <button id="counter-btn" type="button">Кліків: <span id="count">0</span></button>
+            <button id="theme-btn" type="button" class="btn-secondary">Змінити тему</button>
+          </div>
+          <p id="status-msg">Сторінка готова до взаємодії.</p>
+        </section>
+
+        <section class="card info-card">
+          <h2>Стек технологій</h2>
+          <ul>
+            <li><strong>HTML5:</strong> Семантична розмітка</li>
+            <li><strong>CSS3:</strong> Адаптивний Flexbox/Grid дизайн</li>
+            <li><strong>JavaScript:</strong> Браузерні Native API</li>
+            <li><strong>Tooling:</strong> Prettier, ESLint, Git, Vercel</li>
+          </ul>
+        </section>
+      </main>
+
+      <footer>
+        <p>&copy; 2026 Лабораторна робота з веб-розробки</p>
+      </footer>
+    </div>
+
     <script src="./script.js"></script>
   </body>
 </html>
