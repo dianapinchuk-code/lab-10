@@ -1,32 +1,20 @@
-/**
- * @typedef {object} RawShow Запис із `data/shows.json` у форматі TVmaze.
- * @property {number} id
- * @property {string} name
- * @property {string[]} [genres]
- * @property {number | null} [runtime] тривалість серії, хв
- * @property {string | null} [premiered] дата прем'єри, "YYYY-MM-DD"
- * @property {{ average: number | null } | null} [rating]
- * @property {{ id: number, name: string } | null} [network]
- */
+/** @typedef {import('./normalize.js').Show} Show */
+/** @typedef {import('./normalize.js').RawShow} RawShow */
 
 /**
- * @typedef {object} Show Серіал після normalizeShow() — з таким форматом працюють C2–C4.
- * @property {number} id
- * @property {string} name
- * @property {number | null} year рік прем'єри
- * @property {number | null} rating середня оцінка глядачів
- * @property {number | null} runtime тривалість серії, хв
- * @property {string | null} network назва телемережі
- * @property {string[]} genres
- */
-
-/**
- * C1. Перетворює запис TVmaze на {@link Show}.
- * Специфікація — ТЗ, C1.
+ * C1. Перетворює запис TVmaze на Show.
  *
  * @param {RawShow} raw
  * @returns {Show}
  */
 export function normalizeShow(raw) {
-  throw new Error('Not implemented');
+  return {
+    id: raw.id,
+    name: raw.name,
+    year: raw.premiered ? parseInt(raw.premiered.slice(0, 4), 10) : null,
+    rating: raw.rating?.average ?? null,
+    runtime: raw.runtime ?? null,
+    network: raw.network?.name ?? null,
+    genres: raw.genres ? [...raw.genres] : [],
+  };
 }
