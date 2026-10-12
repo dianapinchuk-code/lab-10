@@ -37,14 +37,16 @@ async function handleSearch(event) {
   results.setAttribute('aria-busy', 'true');
 
   const found = await fetchVenues(readFilters());
-  renderResults(results, found);
   venues = found;
+  renderResults(results, found);
   results.setAttribute('aria-busy', 'false');
+
+  const count = found.length;
+  status.textContent = count ? `Знайдено: ${count}` : 'Нічого не знайдено';
 }
 
 form.addEventListener('submit', handleSearch);
 
-// Status line, announced by screen readers (role="status")
 form.addEventListener('submit', () => {
   const count = results.children.length;
   status.textContent = count ? `Знайдено: ${count}` : 'Нічого не знайдено';
